@@ -1,6 +1,7 @@
 package com.example.b10709043_hw2.myDbUtil;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -21,6 +22,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                                             "%s INTEGER NOT NULL," +
                                             "%s TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
         String sql = String.format(FORMAT,  MyDbContact.WaitList.TABLE_NAME,
+                                            MyDbContact.WaitList._ID,
                                             MyDbContact.WaitList.COLUMN_NAME,
                                             MyDbContact.WaitList.COLUMN_PARTY_SIZE,
                                             MyDbContact.WaitList.COLUMN_TIMESTAMP);
@@ -31,5 +33,25 @@ public class MyDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ MyDbContact.WaitList.TABLE_NAME);
         onCreate(db);
+    }
+
+    public void printTable(){
+        Cursor cursor = getWritableDatabase().query(MyDbContact.WaitList.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        System.out.println("sout : print table");
+
+        while(cursor.moveToNext()){
+            System.out.println( "sout : " +
+                    cursor.getString(0)+"\t"+
+                    cursor.getString(1)+"\t"+
+                    cursor.getString(2));
+        }
+        cursor.close();
     }
 }

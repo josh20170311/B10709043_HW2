@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">B10709043_HW2</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="ColorPreferenceTitle">Set Color</string>
+    <string name="textview_Name_text">Name :</string>
+    <string name="textview_Partysize_text">Number :</string>
+    <string name="textview_Name_hint">Your Name</string>
+    <string name="textview_Partysize_hint">Party Size</string>
 </resources>
